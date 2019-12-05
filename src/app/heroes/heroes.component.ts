@@ -16,24 +16,25 @@ export class HeroesComponent implements OnInit {
 //heroes = HEROES; // poprzednia wersja bez uzycia serwisu 
 heroes: Hero[];
 
-selectedHero:Hero;
+/* selectedHero:Hero; */
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
     this.getHeroes();
   }
 
-  onSelect(hero: Hero):void {
-    this.selectedHero = hero;
+  getHeroes():void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
   }
 
+/*    onSelect(hero: Hero):void {
+    this.selectedHero = hero;
+  } */
+ 
 /*   getHeroes():void {
     this.heroes = this.heroService.getHeroes(); 
   } */
-getHeroes():void {
-  this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
-}
  
 
 }
